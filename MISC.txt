@@ -1,0 +1,28 @@
+PAGES
+HOME DONE
+projects SEMI
+SINGLE PROJECT PAGE
+YOU PROJECTS
+GROUPS 
+USERS
+FORUMS
+LOGIN
+SIGNUP
+USER OWN PAGE
+JOB POSISION PAGE
+PEOPLE LIST
+Statistics Page
+
+
+
+PAY TYPES AND IDS
+
+NON => No Pay
+PWH => Per Working Hour, Requires The Employ To Log Own Time And Submit Time Sheet
+OTP => One Time Payment
+PCL =>Per Coded Line
+PTS => Per Task Set, Every Job You Do
+VOL => Payment If At The Discrepancy of the employer
+POA => Price On Application
+
+[NON, PWH, OTP, PLC, PTS, VOL, POA]

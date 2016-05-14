@@ -1,0 +1,253 @@
+<html lang="en">
+	<head>
+		<title>New Job</title>
+		<meta charset="utf-8"/>
+		<link href='http://fonts.googleapis.com/css?family=Kurale' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<header class="mainheader">
+			<nav><ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="projects.html">Projects</a></li>
+				<li class="active"><a href="#">Your Projects</a></li>
+				<li><a href="#">Groups</a></li>
+				<li><a href="#">Users</a></li>
+				<li><a href="jobs.php">Jobs</a></li>
+				<div class="log_sign">
+					<li class="signup"><a href="signup.html">Sign Up</a></li>
+					<li class="login"><a href="login.html">Log In</a></li>
+				</div>
+			</ul></nav>
+		</header>
+		<div class="mainContent">
+			<div class="news">
+				<article class="topContent">
+					<header>
+						<h2><a href="#" title="Hello">New Job Form</a></h2>
+					</header>
+					
+					<content>
+						
+						<script>
+							var ids = ["NON", "PWH", "OTP", "PLC", "PTS", "VOL", "POA", "caped"];
+							
+							function displayNone(){
+								for (i = 0; i < ids.length; i++) {
+									console.log(ids[i]);
+									document.getElementById(ids[i]).style.display = "none";
+								}
+							}
+							
+							function paymentChange(){
+								paymentBox = document.getElementById("paymentType");
+								paymentOption = paymentBox.options[paymentBox.selectedIndex].value;
+								console.log(paymentOption);
+								if(paymentOption == "NON"){
+									displayNone();
+									document.getElementById("NON").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "PWH"){
+									displayNone();
+									document.getElementById("PWH").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "OTP"){
+									displayNone();
+									document.getElementById("OTP").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "PLC"){
+									displayNone();
+									document.getElementById("PLC").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "PTS"){
+									displayNone();
+									document.getElementById("PTS").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "VOL"){
+									displayNone();
+									document.getElementById("VOL").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "POA"){
+									displayNone();
+									document.getElementById("POA").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}
+							}
+						</script>
+					
+						<p>If there is a job that you would like doing please fill out the form below. Thank-You</p>
+						<form>
+							Title <span class="mandatory">*</span><br>
+							<input type="text" name="title" class="log_in_usr" required maxlength="64"><br>
+							
+							For Project <span class="mandatory">*</span><br>
+							<select required class="log_in_usr">
+								<option selected="selected" disabled>Please Select a Project</option> 
+								<option value="6WjkJkrOwB">Test Project</option>
+								<option value="6hgs5thsy5">DISCOVERABEL</option>
+								<option value="Hga-s8H5ts">Google</option>
+								<option value="gfsTrafs4">Yahoo</option>
+							</select>
+							
+							Payment Type <a href="payment_info.html" title="More Information On Payment Types">?</a> <span class="mandatory">*</span><br>
+							<select required class="log_in_usr">
+								<option selected="selected" disabled>Please Select a Project</option> 
+								<option value="NON">No Payment</option> 
+								<option value="PWH">Per Hour</option> 
+								<option value="OTP">One Time Payment</option> 
+								<option value="PCL">Per Line Of Code</option> 
+								<option value="PTS">Per Job/Task Completed</option> 
+								<option value="VOL">Voluntary Payment</option> 
+								<option value="POA">Price On Application</option> 
+							</select>
+							
+							Payment Amount (£)<span class="mandatory">*</span><br>
+							<input type="number" min="0.00" step="0.01" max="2500" value="5.00"  class="log_in_usr" mandatory/><br>
+							
+							<div id="NON" style="display: none;">
+							<p>No Payment means that you will not be paid anything.
+							<br><a href="file:///E:/Unknown/payment_info.html#NON">More Info</a>
+							</p>
+						</div>
+						
+							<div id="PWH" style="display: none;">
+								Pay Per Hour 
+								<input type="number" name="Pay Per Hour" class="log_in_usr" id="PPHPWH"><br>
+								
+								Estimated Hours Worked 
+								<input type="number" name="Estimated Hours Worked" class="log_in_usr" id="EHWPWH"><br>
+								
+								<a href="file:///E:/Unknown/payment_info.html#PWH">More Info</a>
+								
+								<input type="button" name="calculate" value="Calculate" class="log_in_button" onclick="PWH();">
+							</div>
+							
+							<div id="OTP" style="display: none;">
+								Total Payment
+								<input type="number" name="Total Payment" class="log_in_usr" id="TTPOTP"><br>
+								
+								<a href="file:///E:/Unknown/payment_info.html#OTP">More Info</a>
+								
+								<input type="button" name="calculate" value="Calculate" class="log_in_button" onclick="OTP();">
+							</div>
+							
+							<div id="PLC" style="display: none;">
+								Pay Per Line
+								<input type="number" name="Pay Per Line" class="log_in_usr" id="PPLPCL"><br>
+								
+								Total Lines Coded 
+								<input type="number" name="Total Lines Coded" class="log_in_usr" id="TLCPCL"><br>
+								
+								Lines That Are Comments Or Empty
+								<input type="number" name="Lines That Are Comments Or Empty" class="log_in_usr" id="NRLPCL"><br>
+								
+								Salary Cap (£)
+								<input type="number" name="Salary Cap" class="log_in_usr" id="SACPCL"><br>
+								
+								<a href="file:///E:/Unknown/payment_info.html#PLC">More Info</a>
+								
+								<input type="button" name="calculate" value="Calculate" class="log_in_button" onclick="PCL();">
+								
+								<br><span id="caped" style="color: red; display:none;">SALARY CAPPED AT £</span>
+							</div>
+							
+							<div id="PTS" style="display: none;">
+								Pay For Easy Tasks
+								<input type="number" name="Pay For Easy Tasks" class="log_in_usr" id="PPEPTS"><br>
+								
+								Pay For Medium Tasks
+								<input type="number" name="Pay For Medium Tasks" class="log_in_usr" id="PPMPTS"><br>
+								
+								Pay For Hard Tasks
+								<input type="number" name="Pay For Hard Tasks" class="log_in_usr" id="PPHPTS"><br>
+								
+								Pay For Very Hard Tasks
+								<input type="number" name="Pay For Very Hard Tasks" class="log_in_usr" id="PPVPTS"><br>
+								
+								Number Of Easy Tasks
+								<input type="number" name="Number Of Easy Tasks" class="log_in_usr" id="NETPTS"><br>
+								
+								Number Of Medium Tasks
+								<input type="number" name="Number Of Medium Tasks" class="log_in_usr" id="NMTPTS"><br>
+								
+								Number Of Hard Tasks
+								<input type="number" name="Number Of Hard Tasks" class="log_in_usr" id="NHTPTS"><br>
+								
+								Number Of Very Hard Tasks
+								<input type="number" name="Number Of Very Hard Tasks" class="log_in_usr" id="NVTPTS"><br>
+								
+								<a href="file:///E:/Unknown/payment_info.html#PTS">More Info</a>
+								
+								<input type="button" name="calculate" value="Calculate" class="log_in_button" onclick="PTS();">
+							</div>
+							
+							<div id="VOL" style="display: none;">
+								<p>They amount that you received is at the discretion of the employer it can be nothing or up to £1,000,000.<br><a href="file:///E:/Unknown/payment_info.html#VOL">More Info</a></p>
+							</div>
+							
+							<div id="POA" style="display: none;">
+								<p>The price any payment type will be agreed after a discussion between the employee and employer.<br><a href="file:///E:/Unknown/payment_info.html#POA">More Info</a></p>
+							</div>
+							
+							Description (255 Characters)<span class="mandatory">*</span><br>
+							<textarea style="resize: none; width:100%; height: 10%;" placeholder="You Description" maxlength=255></textarea><br>
+							
+							Skills Needed/Required<br>
+							<textarea style="resize: none; width:100%; height: 10%;" placeholder="You Description" maxlength=255></textarea><br>
+							
+							Other Information<br>
+							<textarea style="resize: none; width:100%; height: 10%;" placeholder="You Description" maxlength=255></textarea><br>
+							
+							<!--Would You Like This Job To Be Advised <a href="advertisement.html">?</a>
+							<input type="checkbox" name="ad" value="Bike" class="checkboxButton"><br>-->
+							
+						</form>
+					</content>
+				</article>
+				
+			</div>
+		</div>
+
+		
+		<footer class="mainFooter">
+			<p>Copyright &copy; 2015 <a href="#" title="Joseph-Saunders">Joseph Saunders</a>
+				<ul class="HeadList">
+					<li class="HeadElement"><h4>Pages</h4>
+						<ul class="subList">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Projects</a></li>
+							<li><a href="#">Your Projects</a></li>
+							<li><a href="#">Groups</a></li>
+							<li><a href="#">Users</a></li>
+							<li><a href="jobs.php">Jobs</a></li>
+							<li><a href="#">Log In</a></li>
+							<li><a href="#">Sign Up</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</li>
+					
+					<li class="HeadElement"><h4>Info and T&C's</h4>
+						<ul class="subList">
+							<li><a href="#">EULA</a></li>
+							<li><a href="#">T&C's</a></li>
+							<li><a href="#">Info On Unknown&trade;</a></li>
+							<li><a href="#">Copyright</a></li>
+							<li><a href="#">Freedom Of Information</a></li>
+						</ul>
+					</li>
+					
+					<li class="HeadElement"><h4>Contact</h4>
+						<ul class="subList">
+							<li><a href="#">Website: www.example.com</a></li>
+							<li><a href="#">Email: contact@example.com</a></li>
+							<li><a href="#">Reddit: r/Unknown</a></li>
+							<li><a href="#">Phone: 08855531345</a></li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		</footer>
+		
+	</body>
+</html>

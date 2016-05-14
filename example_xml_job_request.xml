@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job>
+	<id>Htsgd165Fd</id>
+	<title>Head Of API's</title>
+	<uploaded>12:56:17 05/04/2016</uploaded>
+	<updated>09:13:34 07/05/2016</updated>
+	
+	<uploader>XhojAE915C</uploader>
+	<project>Jhsgd5gdts</project>
+	
+	<description>A description of what the job includes.</description>
+	<useful_skills>
+		<skill>Good Time Management</skill>
+		<skill>Have a good understanding of PHP, Python and C</skill>
+	</useful_skills>
+	
+	<other_information>
+		<information>Paid : No</information>
+		<information>Full Time : No</information>
+		<information>For Fun : Yes</information>
+		<information>Level Of Commitment Wanted : Low </information>
+	</other_information>
+	
+	<payment>
+		<type>POA</type>
+		<pay>NONE</pay>
+	</payment>
+	
+	<apply_posision>512</apply_posision>
+	
+	<ad>FALSE</ad>
+</job>

@@ -1,0 +1,278 @@
+<html lang="en">
+	<head>
+		<title>Salary Calculator</title>
+		<meta charset="utf-8"/>
+		<link href='http://fonts.googleapis.com/css?family=Kurale' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<header class="mainheader">
+			<nav><ul>
+				<li class="active"><a href="index.html">Home</a></li>
+				<li><a href="projects.html">Projects</a></li>
+				<li><a href="#">Your Projects</a></li>
+				<li><a href="#">Groups</a></li>
+				<li><a href="#">Users</a></li>
+				<li><a href="jobs.php">Jobs</a></li>
+				<div class="log_sign">
+					<li class="signup"><a href="signup.html">Sign Up</a></li>
+					<li class="login"><a href="login.html">Log In</a></li>
+				</div>
+			</ul></nav>
+		</header>
+		<div class="mainContent">
+			<div class="news">
+				<article class="topContent">
+					<header>
+						<h2><a href="#" title="Hello">Salary Calculator</a></h2>
+					</header>
+					
+					<footer>
+						<p class="post-info">Gives A Rough Estimate Of What You Will Earn</p>
+					</footer>
+					
+					<content>
+						<script>
+							
+							var ids = ["NON", "PWH", "OTP", "PLC", "PTS", "VOL", "POA", "caped"];
+							
+							function displayNone(){
+								for (i = 0; i < ids.length; i++) {
+									console.log(ids[i]);
+									document.getElementById(ids[i]).style.display = "none";
+								}
+							}
+							
+							function paymentChange(){
+								paymentBox = document.getElementById("paymentType");
+								paymentOption = paymentBox.options[paymentBox.selectedIndex].value;
+								console.log(paymentOption);
+								if(paymentOption == "NON"){
+									displayNone();
+									document.getElementById("NON").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "PWH"){
+									displayNone();
+									document.getElementById("PWH").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "OTP"){
+									displayNone();
+									document.getElementById("OTP").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "PLC"){
+									displayNone();
+									document.getElementById("PLC").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "PTS"){
+									displayNone();
+									document.getElementById("PTS").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "VOL"){
+									displayNone();
+									document.getElementById("VOL").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}else if(paymentOption == "POA"){
+									displayNone();
+									document.getElementById("POA").style.display = "block";
+									document.getElementById('payment').innerHTML = '0.00'; 
+								}
+							}
+							
+							function PWH(){
+								pay = 0.00;
+								pay = parseFloat(document.getElementById('PPHPWH').value) * parseFloat(document.getElementById('EHWPWH').value);
+								pay = (pay).toFixed(2);
+								document.getElementById('payment').innerHTML = pay; 
+							}
+							
+							function OTP(){
+								pay = 0.00;
+								pay = parseFloat(document.getElementById('TTPOTP').value);
+								pay = (pay).toFixed(2);
+								document.getElementById('payment').innerHTML = pay; 
+							}
+							
+							function PCL(){
+								pay = 0.00;
+								pay = parseFloat(document.getElementById('PPLPCL').value) * (parseFloat(document.getElementById('TLCPCL').value) - parseFloat(document.getElementById('NRLPCL').value));
+								pay = (pay).toFixed(2);
+								if(pay >= parseFloat(document.getElementById('SACPCL').value)){
+									document.getElementById('caped').innerHTML = 'SALARY CAPPED AT £' + parseFloat(document.getElementById('SACPCL').value) + "<br>PAY WOULD HAVE BEEN £" + pay; 
+									pay = parseFloat(document.getElementById('SACPCL').value);
+									document.getElementById("caped").style.display = "block";
+								}
+								document.getElementById('payment').innerHTML = pay;
+							}
+							
+							function PTS(){
+								pay = 0.00;
+								easy_pay = parseFloat(document.getElementById('PPEPTS').value) * parseFloat(document.getElementById('NETPTS').value);
+								medium_pay = parseFloat(document.getElementById('PPMPTS').value) * parseFloat(document.getElementById('NMTPTS').value);
+								hard_pay = parseFloat(document.getElementById('PPHPTS').value) * parseFloat(document.getElementById('NHTPTS').value);
+								veryHard = parseFloat(document.getElementById('PPVPTS').value) * parseFloat(document.getElementById('NVTPTS').value);
+								pay = easy_pay + medium_pay + hard_pay + veryHard;
+								pay = (pay).toFixed(2);
+								document.getElementById('payment').innerHTML = pay;
+							}
+							
+							
+						</script>
+						
+						<p>Payment Type <a href="payment_info.html" title="More Information On Payment Types">?</a> <br>
+							<select required class="log_in_usr" id="paymentType" onchange="paymentChange();">
+								<option selected="selected" disabled>Please Select a Payment Type</option> 
+								<option value="NON">No Payment</option> 
+								<option value="PWH">Per Hour</option> 
+								<option value="OTP">One Time Payment</option> 
+								<option value="PLC">Per Line Of Code</option> 
+								<option value="PTS">Per Job/Task Completed</option> 
+								<option value="VOL">Voluntary Payment</option> 
+								<option value="POA">Price On Application</option> 
+							</select>
+						
+						<div id="NON" style="display: none;">
+							<p>No Payment means that you will not be paid anything.
+							<br><a href="file:///E:/Unknown/payment_info.html#NON">More Info</a>
+							</p>
+						</div>
+						
+						<div id="PWH" style="display: none;">
+							Pay Per Hour 
+							<input type="number" name="Pay Per Hour" class="log_in_usr" id="PPHPWH"><br>
+							
+							Estimated Hours Worked 
+							<input type="number" name="Estimated Hours Worked" class="log_in_usr" id="EHWPWH"><br>
+							
+							<a href="file:///E:/Unknown/payment_info.html#PWH">More Info</a>
+							
+							<input type="button" name="calculate" value="Calculate" class="log_in_button" onclick="PWH();">
+						</div>
+						
+						<div id="OTP" style="display: none;">
+							Total Payment
+							<input type="number" name="Total Payment" class="log_in_usr" id="TTPOTP"><br>
+							
+							<a href="file:///E:/Unknown/payment_info.html#OTP">More Info</a>
+							
+							<input type="button" name="calculate" value="Calculate" class="log_in_button" onclick="OTP();">
+						</div>
+						
+						<div id="PLC" style="display: none;">
+							Pay Per Line
+							<input type="number" name="Pay Per Line" class="log_in_usr" id="PPLPCL"><br>
+							
+							Total Lines Coded 
+							<input type="number" name="Total Lines Coded" class="log_in_usr" id="TLCPCL"><br>
+							
+							Lines That Are Comments Or Empty
+							<input type="number" name="Lines That Are Comments Or Empty" class="log_in_usr" id="NRLPCL"><br>
+							
+							Salary Cap (£)
+							<input type="number" name="Salary Cap" class="log_in_usr" id="SACPCL"><br>
+							
+							<a href="file:///E:/Unknown/payment_info.html#PLC">More Info</a>
+							
+							<input type="button" name="calculate" value="Calculate" class="log_in_button" onclick="PCL();">
+							
+							<br><span id="caped" style="color: red; display:none;">SALARY CAPPED AT £</span>
+						</div>
+						
+						<div id="PTS" style="display: none;">
+							Pay For Easy Tasks
+							<input type="number" name="Pay For Easy Tasks" class="log_in_usr" id="PPEPTS"><br>
+							
+							Pay For Medium Tasks
+							<input type="number" name="Pay For Medium Tasks" class="log_in_usr" id="PPMPTS"><br>
+							
+							Pay For Hard Tasks
+							<input type="number" name="Pay For Hard Tasks" class="log_in_usr" id="PPHPTS"><br>
+							
+							Pay For Very Hard Tasks
+							<input type="number" name="Pay For Very Hard Tasks" class="log_in_usr" id="PPVPTS"><br>
+							
+							Number Of Easy Tasks
+							<input type="number" name="Number Of Easy Tasks" class="log_in_usr" id="NETPTS"><br>
+							
+							Number Of Medium Tasks
+							<input type="number" name="Number Of Medium Tasks" class="log_in_usr" id="NMTPTS"><br>
+							
+							Number Of Hard Tasks
+							<input type="number" name="Number Of Hard Tasks" class="log_in_usr" id="NHTPTS"><br>
+							
+							Number Of Very Hard Tasks
+							<input type="number" name="Number Of Very Hard Tasks" class="log_in_usr" id="NVTPTS"><br>
+							
+							<a href="file:///E:/Unknown/payment_info.html#PTS">More Info</a>
+							
+							<input type="button" name="calculate" value="Calculate" class="log_in_button" onclick="PTS();">
+						</div>
+						
+						<div id="VOL" style="display: none;">
+							<p>They amount that you received is at the discretion of the employer it can be nothing or up to £1,000,000.<br><a href="file:///E:/Unknown/payment_info.html#VOL">More Info</a></p>
+						</div>
+						
+						<div id="POA" style="display: none;">
+							<p>The price any payment type will be agreed after a discussion between the employee and employer.<br><a href="file:///E:/Unknown/payment_info.html#POA">More Info</a></p>
+						</div>
+						
+						<br>You Will Be Paid : £<span id="payment">0.00</span></p>
+					</content>
+				</article>
+				
+				<article class="bottomContent">
+					<header>
+						<h2><a href="#" title="Me">Info</a></h2>
+					</header>
+					
+					<content>
+						<p>The salary calculator gives a rough estimate what you will earn. It may not be exactly what you will be paid and should not be used for
+						any purposes that may result in a Court of Law. Thank-You for using DISCOVERABLE's&#8482 Salary Calculator.</p>
+
+					</content>
+				</article>
+			</div>
+		</div>
+
+		
+		<footer class="mainFooter">
+			<p>Copyright &copy; 2015 <a href="#" title="Joseph-Saunders">Joseph Saunders</a>
+				<ul class="HeadList">
+					<li class="HeadElement"><h4>Pages</h4>
+						<ul class="subList">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Projects</a></li>
+							<li><a href="#">Your Projects</a></li>
+							<li><a href="#">Groups</a></li>
+							<li><a href="#">Users</a></li>
+							<li><a href="jobs.php">Jobs</a></li>
+							<li><a href="#">Log In</a></li>
+							<li><a href="#">Sign Up</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</li>
+					
+					<li class="HeadElement"><h4>Info and T&C's</h4>
+						<ul class="subList">
+							<li><a href="#">EULA</a></li>
+							<li><a href="#">T&C's</a></li>
+							<li><a href="#">Info On Unknown&trade;</a></li>
+							<li><a href="#">Copyright</a></li>
+							<li><a href="#">Freedom Of Information</a></li>
+						</ul>
+					</li>
+					
+					<li class="HeadElement"><h4>Contact</h4>
+						<ul class="subList">
+							<li><a href="#">Website: www.example.com</a></li>
+							<li><a href="#">Email: contact@example.com</a></li>
+							<li><a href="#">Reddit: r/Unknown</a></li>
+							<li><a href="#">Phone: 08855531345</a></li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		</footer>
+		
+	</body>
+</html>

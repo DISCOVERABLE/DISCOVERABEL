@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+	<title>Example Project</title>
+	<started>12:56:17 05/04/2016</started>
+	<description>A Example Project XML File to show structure and ideas. This is not real project and so should not be applied for.</description>
+	<logo>NONE</logo>
+	<catagory>Game</catagory>
+	<github>https://github.com/example</github>
+	<twitter>NONE</twitter>
+	<facebook>NONE</facebook>
+	<website>www.example.com</website>
+	<reddit>www.reddit.com/r/example</reddit>
+	<contact>
+		<email>jhdsaunders@gmail.com</email>
+	</contact>
+	<founder>
+		<name>Joseph Saunders</name>
+		<id>Ags5JHn-7H</id>
+	</founder>
+	
+	<users>
+		<user>
+			<id>2Hg3d65g-s</id>
+			<posision>Lead</posision>
+		</user>
+		
+		<user>
+			<id>2hstd65g-s</id>
+			<posision>Head Of Design</posision>
+		</user>
+	</users>
+	
+	<unexcepted>
+		<users>
+			<user>
+				<id>2hstd65g-s</id>
+				<posision>Head Of Design</posision>
+			</user>
+		</users>
+	</unexcepted>
+	
+	<open_posision>
+		<posision>
+			<title>Head Of API's</title>
+			<description>Self Explanatory</description>
+			<pay>0.00</pay>
+		</posision>
+	</open_posision>
+</project>

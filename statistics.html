@@ -1,0 +1,105 @@
+<html lang="en">
+	<head>
+		<title>Statistics</title>
+		<meta charset="utf-8"/>
+		<link href='http://fonts.googleapis.com/css?family=Kurale' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		
+		   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+		  google.charts.load("current", {packages:["corechart"]});
+		  google.charts.setOnLoadCallback(drawChart);
+		  function drawChart() {
+			var data = google.visualization.arrayToDataTable([
+			  ['Sex', 'Number Of People'],
+			  ['Male',     100],
+			  ['Female',      90],
+			  ['Unknown',  60],
+			]);
+			
+			var options = {
+			  title: 'Gender Of Followers',
+			  pieHole: 0.4,
+			  slices: [{color: 'blue'}, {color: 'pink'}, {color: '#666'}]
+			};
+			var chart = new google.visualization.PieChart(document.getElementById('sexChart'));
+			chart.draw(data, options);
+		  }
+		</script>
+	
+	
+	
+	</head>
+	<body>
+		<header class="mainheader">
+			<nav><ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="projects.html">Projects</a></li>
+				<li><a href="#">Your Projects</a></li>
+				<li><a href="#">Groups</a></li>
+				<li><a href="#">Users</a></li>
+				<li><a href="jobs.php">Jobs</a></li>
+				<div class="log_sign">
+					<li class="signup"><a href="signup.html">Sign Up</a></li>
+					<li class="login"><a href="login.html">Log In</a></li>
+				</div>
+			</ul></nav>
+		</header>
+		<div class="mainContent">
+			<div class="news">
+				<article class="topContent">
+					<header>
+						<h2><a href="#" title="Hello">Statistics</a></h2>
+					</header>
+					
+					<content>
+						<div id="sexChart" style="width: 900px; height: 500px;"></div>
+					</content>
+				</article>
+			</div>
+		</div>
+
+		
+		<footer class="mainFooter">
+			<p>Copyright &copy; 2015 <a href="#" title="Joseph-Saunders">Joseph Saunders</a>
+				<ul class="HeadList">
+					<li class="HeadElement"><h4>Pages</h4>
+						<ul class="subList">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Projects</a></li>
+							<li><a href="#">Your Projects</a></li>
+							<li><a href="#">Groups</a></li>
+							<li><a href="#">Users</a></li>
+							<li><a href="jobs.php">Jobs</a></li>
+							<li><a href="#">Log In</a></li>
+							<li><a href="#">Sign Up</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</li>
+					
+					<li class="HeadElement"><h4>Info and T&C's</h4>
+						<ul class="subList">
+							<li><a href="#">EULA</a></li>
+							<li><a href="#">T&C's</a></li>
+							<li><a href="#">Info On Unknown&trade;</a></li>
+							<li><a href="#">Copyright</a></li>
+							<li><a href="#">Freedom Of Information</a></li>
+						</ul>
+					</li>
+					
+					<li class="HeadElement"><h4>Contact</h4>
+						<ul class="subList">
+							<li><a href="#">Website: www.example.com</a></li>
+							<li><a href="#">Email: contact@example.com</a></li>
+							<li><a href="#">Reddit: r/Unknown</a></li>
+							<li><a href="#">Phone: 08855531345</a></li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		</footer>
+		
+	</body>
+</html>

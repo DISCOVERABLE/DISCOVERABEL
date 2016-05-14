@@ -1,0 +1,327 @@
+<html lang="en">
+	<head>
+		<title>Search, DISCOVERABLE</title>
+		<meta charset="utf-8"/>
+		<link href='http://fonts.googleapis.com/css?family=Kurale' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body onload="checkCookie()">
+
+		<header class="mainheader">
+			<nav><ul>
+				<li class="active"><a href="index.html">Home</a></li>
+				<li><a href="projects.html">Projects</a></li>
+				<li><a href="#">Your Projects</a></li>
+				<li><a href="groups.php">Groups</a></li>
+				<li><a href="#">Users</a></li>
+				<li><a href="jobs.php">Jobs</a></li>
+				<div class="log_sign" id="login">
+					<li class="signup"><a href="signup.html">Sign Up</a></li>
+					<li class="login"><a href="login.html">Log In</a></li>
+				</div>
+				<div class="loggedin" id="loggedin">
+					<h5 id="user_name"></h5>
+					<ul>
+						<li><a href="#" id="profile">Profile</a></li>
+						<li><a href="messages.php" id="messages">Messages (3)</a></li>
+						<li><a href="log_out.php">Log Out</a></li>
+					</ul>
+				</div>
+			</ul></nav>
+		</header>
+		
+		<script>
+			
+			function getCookie(cname) {
+				var name = cname + "=";
+				var ca = document.cookie.split(';');
+				for(var i = 0; i <ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0)==' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length,c.length);
+					}
+				}
+				return "";
+			}
+			
+			function checkCookie() {
+				var name=getCookie("NAME");
+				if(name==""){
+					document.getElementById("loggedin").style.display = "none";
+				}else{
+					document.getElementById("login").style.display = "none";
+					document.getElementById("user_name").innerHTML = decodeURIComponent(decodeURIComponent(name)) + " (" + getCookie("MESSAGES") + ")";
+					document.getElementById("messages").innerHTML = "Messages (" + getCookie("MESSAGES") + ")";
+					
+				}
+				
+				document.getElementById("profile").href = "profile.php?u=" + getCookie("ID");
+			}
+			
+			function ChangeSearch(type){
+				if(type=="projects"){
+					document.getElementById("projects").style.display = "block";
+					document.getElementById("users").style.display = "none";
+					document.getElementById("groups").style.display = "none";
+					document.getElementById("jobs").style.display = "none";
+					
+					//Changing Header To Active
+					document.getElementById("projectLi").className = "active";
+					document.getElementById("userLi").className = "none";
+					document.getElementById("groupLi").className = "none";
+					document.getElementById("jobLi").className = "none";
+				}else if(type=="users"){
+					document.getElementById("projects").style.display = "none";
+					document.getElementById("users").style.display = "block";
+					document.getElementById("groups").style.display = "none";
+					document.getElementById("jobs").style.display = "none";
+					
+					//Changing Header To Active
+					document.getElementById("projectLi").className  = "none";
+					document.getElementById("userLi").className  = "active";
+					document.getElementById("groupLi").className  = "none";
+					document.getElementById("jobLi").className  = "none";
+				}else if(type=="groups"){
+					document.getElementById("projects").style.display = "none";
+					document.getElementById("users").style.display = "none";
+					document.getElementById("groups").style.display = "block";
+					document.getElementById("jobs").style.display = "none";
+					
+					//Changing Header To Active
+					document.getElementById("projectLi").className  = "none";
+					document.getElementById("userLi").className  = "none";
+					document.getElementById("groupLi").className  = "active";
+					document.getElementById("jobLi").className  = "none";
+				}else if(type=="jobs"){
+					document.getElementById("projects").style.display = "none";
+					document.getElementById("users").style.display = "none";
+					document.getElementById("groups").style.display = "none";
+					document.getElementById("jobs").style.display = "block";
+					
+					//Changing Header To Active
+					document.getElementById("projectLi").className  = "none";
+					document.getElementById("userLi").className  = "none";
+					document.getElementById("groupLi").className  = "none";
+					document.getElementById("jobLi").className  = "active";
+				}else{
+					document.getElementById("projects").style.display = "block";
+					document.getElementById("users").style.display = "none";
+					document.getElementById("groups").style.display = "none";
+					document.getElementById("jobs").style.display = "none";
+					
+					//Changing Header To Active
+					document.getElementById("projectLi").className  = "active";
+					document.getElementById("userLi").className  = "none";
+					document.getElementById("groupLi").className  = "none";
+					document.getElementById("jobLi").className  = "none";
+				}
+			}
+			
+		</script>
+		
+		<div class="mainContent">
+			<div class="news">
+				<article class="topContent">
+					<header>
+						<h2><a href="#" title="Search">Search Joseph Saunders</a></h2>
+					</header>
+					
+					<content>
+						
+						<div id="searchHeader" class="searchHeader">
+							<nav>
+								<ul>
+									<li id="projectLi" class="active"><a href="#" onclick="ChangeSearch('projects')" class="searchHeaderHead">Projects</a></li>
+									<li id="userLi"><a href="#" onclick="ChangeSearch('users')" class="searchHeaderHead">Users</a></li>
+									<li id="groupLi"><a href="#" onclick="ChangeSearch('groups')" class="searchHeaderHead">Groups</a></li>
+									<li id="jobLi"><a href="#" onclick="ChangeSearch('jobs')" class="searchHeaderHead">Jobs</a></li>
+								</ul>
+							</nav>
+						</div>
+						
+						<div id="projects">
+							
+							
+							<script>
+					
+							function updateQueryStringParameter(uri, key, value) {
+							  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+							  var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+							  if (uri.match(re)) {
+								return uri.replace(re, '$1' + key + "=" + value + '$2');
+							  }
+							  else {
+								return uri + separator + key + "=" + value;
+							  }
+							}
+							
+							function UpdateURL(option, updated){
+								url = "";
+								url = updateQueryStringParameter(document.URL, option, updated);
+								console.log(url);
+								window.location.href = url;
+							}
+						
+						</script>
+						
+						<div class="OptionBar">
+							<button id="mainButton">
+								<span>Filters</span>
+								<span id="mainSpan"> &#x25BC </span>
+							</button>
+							<button id="resetButton">
+								<span>Reset</span>
+								<span id="mainSpan"> &#10006 </span>
+							</button>
+							<h6>Search Results : 2</h6>
+							
+							<div style="display: none;" id="mainDiv">
+								<div class="filter-col">
+									<ul>
+										<lh>Sort By</lh>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','a')">Most Relevant</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','z')">Least Relevant</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','a')">A-Z</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','z')">Z-A</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','a')">Most Followers</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','z')">Least Followers</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','a')">Recently Update</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','z')">Update Longest Ago</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','a')">Recently Created</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('o','z')">Created Longest Ago</a></li>
+									</ul>
+								</div>
+									
+								<div class="filter-col">
+									<ul>
+										<lh>Show</lh>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('s','a')">Active</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('s','a')">Unactive</a></li>
+										<li><a href="javascript:void(0);" onclick="UpdateURL('s','a')">Both</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<script>
+							$(document).ready(function(){
+								$('[data-toggle="tooltip"]').tooltip();   
+							});
+							
+						</script>
+						
+						
+						
+						
+						<script>
+							var mainButton = document.getElementById("mainButton");
+							var mainDiv = document.getElementById("mainDiv");
+							var mainSpan = document.getElementById("mainSpan");
+							var resetButton = document.getElementById("resetButton");
+							var state = "hidden";
+							resetButton.style.display = "none";
+
+							resetButton.addEventListener("click", function() {
+								console.log("reset Button Has Been Hit!");
+								window.location.href = "http://192.168.1.102/Unknown/groups.php";
+
+							});
+							
+							mainButton.addEventListener("click", function() {
+								if(state == "hidden"){
+									resetButton.style.display = "inline-block";
+									mainDiv.style.display = "block";
+									state = "vis";
+									mainSpan.innerHTML = "&#x25B2";
+								} else{
+									mainDiv.style.display = "none";
+									resetButton.style.display = "none";
+									state = "hidden";
+									mainSpan.innerHTML = "&#x25BC";
+								}
+							});
+						</script>
+						
+							<a class="project" href="project.html">
+								<img src="imgs/standard_project_img.png">
+								<div>
+									<header>Test Project</header>
+									<footer>Started By Joseph Saunders At 12:56:17 On The 05/04/2016<br>
+									Last Updated At 12:56:17 On The 05/04/2016
+									</footer>
+								</div>
+							</a>
+							
+							<a class="project" href="project.html">
+								<img src="imgs/standard_project_img.png">
+								<div>
+									<header>Test Project</header>
+									<footer>Started By Joseph Saunders At 12:56:17 On The 05/04/2016<br>
+									Last Updated At 12:56:17 On The 05/04/2016
+									</footer>
+								</div>
+							</a>
+						</div>
+						
+						<div id="users" style="display: none;">
+							
+						</div>
+						
+						<div id="groups" style="display: none;">
+							<p>No Search Results Came Back For Groups.<br>Sorry</p>
+						</div>
+						
+						<div id="jobs" style="display: none;">
+							<p>No Search Results Came Back For Jobs.<br>Sorry</p>
+						</div>
+					</content>
+				</article>
+			</div>
+		</div>
+
+		
+		<footer class="mainFooter">
+			<p>Copyright &copy; 2015 <a href="#" title="Joseph-Saunders">Joseph Saunders</a>
+				<ul class="HeadList">
+					<li class="HeadElement"><h4>Pages</h4>
+						<ul class="subList">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Projects</a></li>
+							<li><a href="#">Your Projects</a></li>
+							<li><a href="#">Groups</a></li>
+							<li><a href="#">Users</a></li>
+							<li><a href="jobs.php">Jobs</a></li>
+							<li><a href="#">Log In</a></li>
+							<li><a href="#">Sign Up</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</li>
+					
+					<li class="HeadElement"><h4>Info and T&C's</h4>
+						<ul class="subList">
+							<li><a href="#">EULA</a></li>
+							<li><a href="#">T&C's</a></li>
+							<li><a href="#">Info On Unknown&trade;</a></li>
+							<li><a href="#">Copyright</a></li>
+							<li><a href="#">Freedom Of Information</a></li>
+						</ul>
+					</li>
+					
+					<li class="HeadElement"><h4>Contact</h4>
+						<ul class="subList">
+							<li><a href="#">Website: www.example.com</a></li>
+							<li><a href="#">Email: contact@example.com</a></li>
+							<li><a href="#">Reddit: r/Unknown</a></li>
+							<li><a href="#">Phone: 08855531345</a></li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		</footer>
+		
+	</body>
+</html>

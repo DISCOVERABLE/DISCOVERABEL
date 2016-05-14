@@ -1,0 +1,38 @@
+<message id="gHTD5GSTSs">
+	<id>gHTD5GSTSs</id>
+	<from>
+		<user>
+			<id>6WjkJkrOwB</id>
+			<name>
+				<first>Andrew</first>
+				<middle>Mark</middle>
+				<last>Saunders</last>
+				<username>AMS</username>
+			</name>
+		</user>
+	</from>
+	
+	<to>
+		<user>
+		<id>XhojAE915C</id>
+			<name>
+				<first>Joseph</first>
+				<middle>Henry Hunter Dawson</middle>
+				<last>Saunders</last>
+				<username>JoeSaunders</username>
+			</name>
+		</user>
+	</to>
+	
+	<confermed_sent>1</confermed_sent>
+	<read>0</read>
+	
+	<sent>2016-04-28 17:12:14</sent>
+	
+	<subject>Hello</subject>
+	<message>Hello From Someone, To Someone</message>
+	
+	<attachments>
+		<attachment>https://www.google.com</attachment>
+	</attachments>
+</message>
