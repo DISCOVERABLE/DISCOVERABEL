@@ -36,7 +36,7 @@
 
 <html lang="en">
 	<head>
-		<title>Sign Up</title>
+		<title>%TITLE%</title>
 		<meta charset="utf-8"/>
 		<link href='http://fonts.googleapis.com/css?family=Kurale' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="style.css" type="text/css"/>
@@ -60,16 +60,8 @@
 		<div class="mainContent">
 			<div class="news">
 				<article class="topContent">
-					<header>
-						<h2><a href="#" title="Hello">Test Size</a></h2>
-					</header>
-					
-					<footer>
-						<p class="post-info">This Is A Post By Joseph Saunders The Creator Of This Site</p>
-					</footer>
-					
-					<content>
-						<p><?php
+						
+						<?php
 						
 													
 							$conf = parse_ini_file('../../config.ini');
@@ -77,7 +69,18 @@
 							$conn = mysql_connect($conf["host"], $conf["user"], $conf["password"]);
 								
 							if(! $conn ) {
-								die('An  Error Occurred when connecting to us<br>It has the code : ' . mysql_errno() . "<br>Please try again, or if this error persists please contact us.");
+								$buffer=ob_get_contents();
+								ob_end_clean();
+								$buffer=str_replace("%TITLE%","ERROR " . mysql_errno() ,$buffer);
+								echo $buffer;
+								die('<header>
+										<h2><a href="#" title="Error Occurred">Error '  . mysql_errno() . '</a></h2>
+									</header>
+									
+									<content>
+										<p>Sorry something went wrong.<br>It had the error code ' . mysql_errno() . '<br>Please try again or if this
+										problem persists contact us.</p>
+								</content>');
 							}
 							
 							mysql_select_db($conf["database"]);
@@ -85,7 +88,17 @@
 							#Checking USERNAME
 							$query = mysql_query("SELECT * FROM USERS WHERE USERNAME='".$USERNAME."'");
 							if(mysql_num_rows($query) > 0){
-								echo $USERNAME . " as an user name is already in our system. You may already have an account is so <a href='login.html'>Log In</a>. If not please try another email.";
+								$buffer=ob_get_contents();
+								ob_end_clean();
+								$buffer=str_replace("%TITLE%","Username Already In Use" ,$buffer);
+								echo $buffer;
+								die('<header>
+										<h2><a href="#" title="Error Occurred">Username "' . $USERNAME . '" Already In Use</a></h2>
+									</header>
+									
+									<content>
+										<p>Sorry but the username "' . $USERNAME . '" is alredy in use please go back and pick a different one.</p>
+									</content>');
 							}
 							
 							#Checking ID
@@ -100,24 +113,50 @@
 							#Checking EMAIL
 							$query = mysql_query("SELECT * FROM USERS WHERE EMAIL='".$EMAIL."'");
 							if(mysql_num_rows($query) > 0){
-								echo $EMAIL . " as an email is already in our system. You may already have an account is so <a href='login.html'>Log In</a>. If not please try another email.";
+								$buffer=ob_get_contents();
+								ob_end_clean();
+								$buffer=str_replace("%TITLE%","Email Already In Use" ,$buffer);
+								echo $buffer;
+								die('<header>
+										<h2><a href="#" title="EmaIl In Use">Email "' . $EMAIL . '" Already In Use</a></h2>
+									</header>
+									
+									<content>
+										<p>Sorry but the email "' . $EMAIL . '" is already in use. You may already own a account. Why not see if you can <a href="login.html">log in</a>.</p>
+									</content>');
 							}
 
 							
 							$sql = ' INSERT INTO USERS VALUES("' . $ID .'", "'. $USERNAME . '", "'. $PASSWORD . '", "'. $salt . '", "'. $NAME . '", "'. $MID_NAME . '", "'. $SURNAME . '", "'
-						   . $EMAIL . '", "'. $DOB . '", NOW(), "' . $PHONE . '", "'. $JOB . '", "'. $GENDER . '", "'. $LOCATION . '", "'. $COUNTRY . '")';
-							
+						   . $EMAIL . '", "'. $DOB . '", NOW(), "' . $PHONE . '", "'. $JOB . '", "'. $GENDER . '", "'. $LOCATION . '", "'. $COUNTRY . '", NULL, NULL, NULL, NULL, "")';
+						   
 							$retval = mysql_query( $sql, $conn );
 						   
 							if(! $retval ) {
-								die('An Unknown Error Occurred <br>It has the code : ' . mysql_errno() . "<br>Please try again, or if this error persists please contact us.");
+								$buffer=ob_get_contents();
+								ob_end_clean();
+								$buffer=str_replace("%TITLE%","Welcome " . $NAME,$buffer);
+								echo $buffer;
+								die('<header>
+										<h2><a href="#" title="Error Occurred">Error '  . mysql_errno() . '</a></h2>
+									</header>
+									
+									<content>
+										<p>Sorry something went wrong.<br>It had the error code ' . mysql_errno() . '<br>Please try again or if this
+										problem persists contact us</p>
+									</content>');
 							}
 							
-							echo "Welcome " . $NAME . " " . $MID_NAME . " " . $SURNAME;
+							echo"<header>
+										<h2><a href=\"#\" title=\"Hello\">Welcome " . $NAME . " " . $SURNAME . "</a></h2>
+									</header>
+									
+									<content>
+										<p>Welcome To DISCOVERABLE " . $NAME . " " . $MID_NAME . " " . $SURNAME . "</p>
+								</content>";
 							
 							mysql_close($conn);
-						?></p>
-					</content>
+						?>
 				</article>
 				
 			</div>
